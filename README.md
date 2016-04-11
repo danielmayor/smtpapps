@@ -11,7 +11,7 @@
 3. You need a PostgreSQL server
 	1. Install the smtpapps-script.sql
 
-GUI Setup
+### GUI Setup
 1. Please rename and put the config.ini-example file outside your apache document root.
 2. Edit and set the path to the config file in session_start.php file.
 
@@ -24,7 +24,7 @@ The script does a (daily) check of failed mails and then sends a mail with the r
 1. Put the file into a directory.
 2. Set the path to the GUI config file.
 3. sudo crontab -e
-\# Comprobación diaria de errores en e-mails
+4. \# Comprobación diaria de errores en e-mails
 0 7 * * * /usr/bin/php /path-to-the-file/resumen-diario.php
 
 
