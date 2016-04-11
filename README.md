@@ -1,6 +1,6 @@
 # smtpapps
 
-## Postfix server + Fluentd + PostgreSQL logging
+## SMTP mail logging based on Postfix + Fluentd + PostgreSQL
 
 ### Install requirements
 1. You need a Postfix server (it should work well with v 2.11 or above)
