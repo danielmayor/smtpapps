@@ -3,12 +3,12 @@
 ## SMTP mail logging based on Postfix + Fluentd + PostgreSQL
 
 ### Install requirements
-1. You need a Postfix server (it should work well with v 2.11 or above)
+1. You will need a Postfix server (it should work well with v 2.11 or above)
 2. Install the fluentd script (td-agent version)
-	2.1 Download and install fluentd plugin postgres from https://github.com/uken/fluent-plugin-postgres
-	2.2 Put td-agent.conf in /etc/td-agent/
-	2.3 Put out_postgres.rb file in /opt/td-agent/embedded/lib/ruby/gems/2.1.0/gems/fluent-plugin-postgres-0.0.1/lib/fluent/plugin
-3. You need a PostgreSQL server
+	1. Download and install fluentd plugin postgres from https://github.com/uken/fluent-plugin-postgres
+	2. Put td-agent.conf in /etc/td-agent/
+	3. Put out_postgres.rb file in /opt/td-agent/embedded/lib/ruby/gems/2.1.0/gems/fluent-plugin-postgres-0.0.1/lib/fluent/plugin
+3. You will need a PostgreSQL server
 	1. Install the smtpapps-script.sql
 
 ### GUI Setup
