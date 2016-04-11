@@ -2,7 +2,7 @@
 
 ## Postfix server + Fluentd + PostgreSQL logging
 
-Install requirements
+### Install requirements
 1. You need a Postfix server (it should work well with v 2.11 or above)
 2. Install the fluentd script (td-agent version)
 	2.1 Download and install fluentd plugin postgres from https://github.com/uken/fluent-plugin-postgres
@@ -17,14 +17,14 @@ GUI Setup
 
 
 
-=== Crontab file ===
+## Crontab file
 The script does a (daily) check of failed mails and then sends a mail with the results.
 
-Setup
+### Setup
 1. Put the file into a directory.
 2. Set the path to the GUI config file.
 3. sudo crontab -e
-# Comprobación diaria de errores en e-mails
+\# Comprobación diaria de errores en e-mails
 0 7 * * * /usr/bin/php /path-to-the-file/resumen-diario.php
 
 
