@@ -1,0 +1,16 @@
+; Please put this file outside your document root
+
+[postgresql]
+host = "localhost"
+dbname = "postgres"
+user = "postgres"
+password = "postgres"
+
+
+[mail]
+para = "User <user@example.com>"
+asunto = "New errors on "
+desde = "SMTPapps <smtpapps@example.com>"
+
+[server]
+url = "http://smtpapps/"
