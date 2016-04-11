@@ -177,11 +177,8 @@ require_once("session_start.php");
 				<select class="mainForm" name="field_1" id="field_1">
 <?php
 	
-	$_SESSION['conf'] = parse_ini_file(__DIR__."/../../config.ini", true);
-	echo "SESSION conf host: " .$_SESSION['conf']['postgresql']['host'];
-
 	// PostgreSLQ connection & query
-	$dbconn_menu = pg_connect("host=".$_SESSION['conf']['postgresql']['host']." dbname=".$_SESSION['conf']['postgresql']['dbname']." user=".$_SESSION['conf']['postgresql']['user']." password=".$_SESSION['conf']['postgresql']['password']) or die("No se ha podido conectar: " . pg_last_error());
+	$dbconn_menu = pg_connect("host=".$_SESSION['config']['postgresql']['host']." dbname=".$_SESSION['config']['postgresql']['dbname']." user=".$_SESSION['config']['postgresql']['user']." password=".$_SESSION['config']['postgresql']['password']) or die("No se ha podido conectar: " . pg_last_error());
 	$query_from = "SELECT distinct \"from\".desde FROM fluentd.\"from\" ORDER BY desde ASC";
 	$result_from = pg_exec($dbconn_menu,$query_from);
 

@@ -16,11 +16,13 @@
 
 <?php
 
+	require_once("session_start.php");
+	
 	// Please put config.ini file outside your document root
-	$conf = parse_ini_file (__DIR__."/../../config.ini", true);
+	//$conf = parse_ini_file (__DIR__."/../../config.ini", true);
 
 	// PostgreSLQ connection & query
-	$dbconn_cola = pg_connect("host=".$conf['postgresql']['host']." dbname=".$conf['postgresql']['dbname']." user=".$conf['postgresql']['user']." password=".$conf['postgresql']['password']) or die("No se ha podido conectar: " . pg_last_error());
+	$dbconn_cola = pg_connect("host=".$_SESSION['config']['postgresql']['host']." dbname=".$_SESSION['config']['postgresql']['dbname']." user=".$_SESSION['config']['postgresql']['user']." password=".$_SESSION['config']['postgresql']['password']) or die("No se ha podido conectar: " . pg_last_error());
 
 $query_cola = "SELECT DISTINCT postfix.id_log, \"from\".desde, postfix.para, postfix.\"time\", postfix.status
 FROM fluentd.\"from\", fluentd.postfix
