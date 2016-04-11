@@ -16,7 +16,11 @@
 
 <?php
 
-$dbconn_detalle = pg_connect("host=cmbdpostgres dbname=postgres user=fluentd password=fluentd") or die("No se ha podido conectar: " . pg_last_error());
+	// Please put config.ini file outside your document root
+	$conf = parse_ini_file (__DIR__."/../../config.ini", true);
+
+	// PostgreSLQ connection & query
+	$dbconn_detalle = pg_connect("host=".$conf['postgresql']['host']." dbname=".$conf['postgresql']['dbname']." user=".$conf['postgresql']['user']." password=".$conf['postgresql']['password']) or die("No se ha podido conectar: " . pg_last_error());
 
 $query_detalle = "SELECT 
   \"from\".desde, 
