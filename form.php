@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>SMTPapps - Búsqueda de registros de envíos</title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="style.css" rel="stylesheet" type="text/css">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="css/style.css" rel="stylesheet" type="text/css">
 	<!-- calendar stuff -->
 	      <link rel="stylesheet" type="text/css" href="calendar/calendar-blue2.css" />
 	      <script type="text/javascript" src="calendar/calendar.js"></script>
