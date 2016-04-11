@@ -15,11 +15,7 @@
 <BR/><ul class=mainForm><li class=mainForm><label class=formFieldQuestion>
 
 <?php
-
 	require_once("session_start.php");
-
-	// Please put config.ini file outside your document root
-	//$conf = parse_ini_file (__DIR__."/../../config.ini", true);
 
 	// PostgreSLQ connection & query
 	$dbconn = pg_connect("host=".$_SESSION['config']['postgresql']['host']." dbname=".$_SESSION['config']['postgresql']['dbname']." user=".$_SESSION['config']['postgresql']['user']." password=".$_SESSION['config']['postgresql']['password']) or die("No se ha podido conectar: " . pg_last_error());

@@ -163,7 +163,6 @@ require_once("session_start.php");
 <body onLoad="collapseAll()">
 
 	<div id="mainForm">
-
 		<div id="formHeader">
 			<h2 class="formInfo">SMTPapps</h2>
 			<p class="formInfo">Búsqueda de registros de envíos</p>
