@@ -16,11 +16,13 @@
 
 <?php
 
+	require_once("session_start.php");
+
 	// Please put config.ini file outside your document root
-	$conf = parse_ini_file (__DIR__."/../../config.ini", true);
+	//$conf = parse_ini_file (__DIR__."/../../config.ini", true);
 
 	// PostgreSLQ connection & query
-	$dbconn = pg_connect("host=".$conf['postgresql']['host']." dbname=".$conf['postgresql']['dbname']." user=".$conf['postgresql']['user']." password=".$conf['postgresql']['password']) or die("No se ha podido conectar: " . pg_last_error());
+	$dbconn = pg_connect("host=".$_SESSION['conf']['postgresql']['host']." dbname=".$_SESSION['conf']['postgresql']['dbname']." user=".$_SESSION['conf']['postgresql']['user']." password=".$_SESSION['conf']['postgresql']['password']) or die("No se ha podido conectar: " . pg_last_error());
 
 	$query = 'SELECT postfix.id_log, "from".desde, postfix.para, postfix."time", postfix.status
 	FROM fluentd."from", fluentd.postfix 
@@ -62,7 +64,7 @@
 
 	$result = pg_exec($query) or die('La consulta original ha fallado: ' . pg_last_error());
 
-	//if (($rows = pg_num_rows($result)) == 0) {}		// 0 resultados.
+	if (($rows = pg_num_rows($result)) == 0) {}		// 0 resultados.
 
 	/* Debug:
 	echo "Query: " . $query;

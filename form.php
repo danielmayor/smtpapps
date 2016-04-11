@@ -1,3 +1,6 @@
+<?php
+require_once("session_start.php");
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -173,8 +176,6 @@
 				<label class="formFieldQuestion">E-mail del remitente</label>
 				<select class="mainForm" name="field_1" id="field_1">
 <?php
-
-	session_start();
 	
 	$_SESSION['conf'] = parse_ini_file(__DIR__."/../../config.ini", true);
 	echo "SESSION conf host: " .$_SESSION['conf']['postgresql']['host'];
