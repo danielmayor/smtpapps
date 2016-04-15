@@ -152,11 +152,13 @@ p.formInfo
 .resultTable tr
 {
 	border-bottom: solid 1px #ccc;
+	
 }
 
 .resultTable td
 {
 	border-left:1px solid #ccc;
+	padding-right: 8px;
 }
 
 .cabecera
