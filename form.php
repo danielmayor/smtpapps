@@ -1,7 +1,7 @@
 <?php
 require_once("session_start.php");
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!doctype html>
 <html>
 <head>
 	<title>SMTPapps - Búsqueda de registros de envíos</title>
@@ -13,8 +13,8 @@ require_once("session_start.php");
 	      <script type="text/javascript" src="calendar/calendar-setup.js"></script>
 	<!-- END calendar stuff -->
 
-    <!-- expand/collapse function -->
-    <SCRIPT type=text/javascript>
+	<!-- expand/collapse function -->
+	<SCRIPT type=text/javascript>
 	<!--
 	function collapseElem(obj)
 	{
@@ -168,33 +168,34 @@ require_once("session_start.php");
 			<p class="formInfo">Búsqueda de registros de envíos</p>
 		</div>
 
-		<BR/><!-- begin form -->
+		<br><!-- begin form -->
 		<form method=post enctype=multipart/form-data action=processor.php onSubmit="return validatePage1();"><ul class=mainForm id="mainForm_1">
-
-				<li class="mainForm" id="fieldBox_1">
-				<label class="formFieldQuestion">E-mail del remitente</label>
-				<select class="mainForm" name="field_1" id="field_1">
+			<li class="mainForm" id="fieldBox_1">
+			<label class="formFieldQuestion">E-mail del remitente</label>
+			<select class="mainForm" name="field_1" id="field_1">
 <?php
-	
+	// Campo desde
 	// PostgreSLQ connection & query
 	$dbconn_menu = pg_connect("host=".$_SESSION['config']['postgresql']['host']." dbname=".$_SESSION['config']['postgresql']['dbname']." user=".$_SESSION['config']['postgresql']['user']." password=".$_SESSION['config']['postgresql']['password']) or die("No se ha podido conectar: " . pg_last_error());
 	$query_from = "SELECT distinct \"from\".desde FROM fluentd.\"from\" ORDER BY desde ASC";
 	$result_from = pg_exec($dbconn_menu,$query_from);
 
+	echo "<option value=\"\">&nbsp;</option>";
 	while ($row = pg_fetch_assoc($result_from))
-        echo "<option value=\"" . htmlspecialchars($row['desde']) . "\">" . htmlspecialchars($row['desde']) . "</option>";
-	
+		if ($row['desde'])
+	        	echo "<option value=\"" . htmlspecialchars($row['desde']) . "\">" . htmlspecialchars($row['desde']) . "&nbsp;</option>";
 	pg_free_result($result_from);
-
 	echo "</select>";
 	echo "</li>";
+
+	// Campo para
 	echo "<li class=\"mainForm\" id=\"fieldBox_2\">";
 	echo "<label class=\"formFieldQuestion\">E-mail del destinatario</label>";
 	echo "<select class=\"mainForm\" name=\"field_2\" id=\"field_2\">";
 	$query_para = "SELECT distinct postfix.\"para\" FROM fluentd.postfix ORDER BY para ASC";
 	$result_para = pg_exec($dbconn_menu,$query_para);
 
-	echo "<option value=\"\"></option>";
+	echo "<option value=\"\">&nbsp;</option>";
 	while ($row = pg_fetch_assoc($result_para))
         echo "<option value=\"" . htmlspecialchars($row['para']) . "\">" . htmlspecialchars($row['para']) . "</option>";
 	
@@ -216,7 +217,7 @@ require_once("session_start.php");
 					step           :    1                
 					});</script></li>
 	<li class="mainForm" id="fieldBox_4">
-		<label class="formFieldQuestion">Hora de inicio&nbsp;<a class=info href=#><img src=imgs/tip_small.png border=0>
+		<label class="formFieldQuestion">Hora de inicio&nbsp;<a class=info href=#><img src=imgs/tip_small.png alt="formato de hora: hh:mm:ss">
 		<span class=infobox>Formato hh:mm:ss</span></a></label>
 		<input class=mainForm type=text name=field_4 id=field_4 size='8' value='00:00:00'></li>
 
@@ -233,7 +234,7 @@ require_once("session_start.php");
 					});</script></li>
 
 	<li class="mainForm" id="fieldBox_6">
-		<label class="formFieldQuestion">Hora de fin&nbsp;<a class=info href=#><img src=imgs/tip_small.png border=0>
+		<label class="formFieldQuestion">Hora de fin&nbsp;<a class=info href=#><img src=imgs/tip_small.png alt="formato de hora: hh:mm:ss">
 		<span class=infobox>Formato hh:mm:ss</span></a></label>
 		<input class=mainForm type=text name=field_6 id=field_6 size='8' value='23:59:59'></li>
 		
@@ -275,11 +276,11 @@ require_once("session_start.php");
 				<li class="mainForm">
 					<input id="saveForm" class="mainForm" type="submit" value="Enviar" />
 				</li>
-
+			</ul>
 			</form>
 			<!-- end of form -->
 		<!-- close the display stuff for this page -->
-		</ul></div>
+		</div>
 		
 		<div id="footer">
 			<p class="footer"><a class=footer href=http://phpformgen.sourceforge.net>Powered by phpFormGenerator</a></p>

@@ -1,8 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!doctype html>
 <html>
 <head>
 	<title>SMTPapps - Búsqueda de registros de envíos</title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="style.css" rel="stylesheet" type="text/css">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -12,7 +13,7 @@
 	<p class="formInfo">Búsqueda de registros de envíos</p>
 </div>
 
-<BR/><ul class=mainForm><li class=mainForm><label class=formFieldQuestion>
+<ul class=mainForm><li class=mainForm>
 
 <?php
 	require_once("session_start.php");
@@ -81,14 +82,14 @@
 	*/
 
 	// Imprimiendo los resultados en HTML
-	echo "<table border=1px>\n";
-	echo "\t<tr>\n";
+	echo "<table class='resultTable'>\n";
+	echo "\t<tr class='cabecera'>\n";
 	echo "\t<td>id</td>\n";
 	echo "\t<td>Desde</td>\n";
 	echo "\t<td>Para</td>\n";
 	echo "\t<td>Fecha & hora</td>\n";
 	echo "\t<td>Estado</td>\n";
-	// echo "\t<td>Detalles</td>\n";
+	echo "\t<td>Detalle</td>\n";
 	echo "\t</tr>\n";
 	while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 		echo "\t<tr>\n";
@@ -110,7 +111,7 @@
 
 ?>
 
-</label></li></ul>
+</li></ul>
 <BR/>
 </div>
 <div id="footer">

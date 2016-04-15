@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!doctype html>
 <html>
 <head>
 	<title>SMTPapps - Búsqueda de registros de envíos</title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="style.css" rel="stylesheet" type="text/css">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -11,8 +11,8 @@
 		<h2 class="formInfo">SMTPapps</h2>
 		<p class="formInfo">Búsqueda de registros de envíos</p>
 	</div>
-	<BR/>
-	<ul class=mainForm><li class=mainForm><label class=formFieldQuestion>
+	<br>
+	<ul class=mainForm><li class=mainForm>
 
 <?php
 
@@ -44,23 +44,23 @@
 	$result_detalle = pg_exec($query_detalle) or die('La consulta ha fallado: ' . pg_last_error());
 
 	// Imprimiendo los resultados en HTML
-	echo "<table border=1px>\n";
+	echo "<table class='resultTable'>\n";
 	$line = pg_fetch_array($result_detalle, null, PGSQL_ASSOC);
-	echo "\t\t<tr><td><b>Remitente</td><td>$line[desde]</td></tr>\n";
-	echo "\t\t<tr><td><b>Destinatario</td><td>$line[para]</td></tr>\n";
-	echo "\t\t<tr><td><b>Estado de envío</td><td>$line[status]</td></tr>\n";
-	echo "\t\t<tr><td><b>Detalle del estado</td><td>$line[status_detail]</td></tr>\n";
-	echo "\t\t<tr><td><b>Fecha y hora</td><td>$line[time]</td></tr>\n";
-	echo "\t\t<tr><td><b>Número de destinatarios</td><td>$line[nrcpt]</td></tr>\n";
-	echo "\t\t<tr><td><b>ID de cola </td><td><a href=\"cola.php?id=$line[queue_id]\">$line[queue_id] (clic para más detalle)</a></td></tr>\n";
-	echo "\t\t<tr><td><b>Tamaño (bytes)</td><td>$line[size]</td></tr>\n";
-	echo "\t\t<tr><td><b>Dominio</td><td>$line[domain]</td></tr>\n";
-	echo "\t\t<tr><td><b>Relay</td><td>$line[relay]</td></tr>\n";
-	echo "\t\t<tr><td><b>Retardo (segundos)</td><td>$line[delay]</td></tr>\n";
-	echo "\t\t<tr><td><b>Retardo desglosado</td><td>$line[delays]</td></tr>\n";
-	echo "\t\t<tr><td><b>Notificaciones de estado de entrega (DSN)</td><td>$line[dsn]</td></tr>\n";
-	echo "\t\t<tr><td><b>Nombre del host</td><td>$line[hostname]</td></tr>\n";
-	echo "\t\t<tr><td><b>Proceso</td><td>$line[process]</td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>Remitente</td><td>$line[desde]</td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>Destinatario</td><td>$line[para]</td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>Estado de envío</td><td>$line[status]</td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>Detalle del estado</td><td>$line[status_detail]</td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>Fecha y hora</td><td>$line[time]</td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>Número de destinatarios</td><td>$line[nrcpt]</td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>ID de cola </td><td><a href=\"cola.php?id=$line[queue_id]\">$line[queue_id] (clic para más detalle)</a></td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>Tamaño (bytes)</td><td>$line[size]</td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>Dominio</td><td>$line[domain]</td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>Relay</td><td>$line[relay]</td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>Retardo (segundos)</td><td>$line[delay]</td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>Retardo desglosado</td><td>$line[delays]</td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>Notificaciones de estado de entrega (DSN)</td><td>$line[dsn]</td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>Nombre del host</td><td>$line[hostname]</td></tr>\n";
+	echo "\t\t<tr><td class='cabecera'>Proceso</td><td>$line[process]</td></tr>\n";
 	echo "</table>\n";
 	echo "<br>";
 	echo "Leyenda:<br>";
@@ -78,8 +78,8 @@
 
 ?>
 
-	</label></li></ul>
-	<BR/>
+	</li></ul>
+	<br>
 </div>
 <div id="footer">
 	<p class="footer"><a class=footer href=form.php>Inicio</a></p>
