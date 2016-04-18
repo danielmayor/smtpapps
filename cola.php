@@ -25,7 +25,7 @@
 		FROM fluentd.\"from\", fluentd.postfix
 		WHERE \"from\".queue_id = postfix.queue_id
 		AND postfix.queue_id = '" . $_GET['id'] . "'
-		ORDER BY postfix.\"time\" ASC";
+		ORDER BY postfix.id_log ASC";
 
 		$result_cola = pg_exec($query_cola) or die('La consulta ha fallado: ' . pg_last_error());
 

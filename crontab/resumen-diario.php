@@ -13,12 +13,13 @@
 	// PostgreSLQ connection & query
 	$dbconn = pg_connect("host=".$conf['postgresql']['host']." dbname=".$conf['postgresql']['dbname']." user=".$conf['postgresql']['user']." password=".$conf['postgresql']['password']) or die("No se ha podido conectar: " . pg_last_error());
 	
-	$query = 'SELECT postfix.id_log, "from".desde, postfix.para, postfix."time", postfix.status
+	$query = 'SELECT DISTINCT postfix.id_log, "from".desde, postfix.para, postfix."time", postfix.status
 	FROM fluentd."from", fluentd.postfix
 	WHERE "from".queue_id = postfix.queue_id
 	AND postfix."time" >= \'' . $ayer . ' 00:00:00\'
         AND postfix."time" <= \'' . $ayer . ' 23:59:59\'
-        AND status != \'sent\'';
+        AND status != \'sent\'
+		ORDER BY id_log ASC';
 
 	iconv_set_encoding("internal_encoding", "utf-8");
 
