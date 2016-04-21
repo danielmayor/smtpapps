@@ -21,7 +21,7 @@
 	// PostgreSLQ connection & query
 	$dbconn = pg_connect("host=".$_SESSION['config']['postgresql']['host']." dbname=".$_SESSION['config']['postgresql']['dbname']." user=".$_SESSION['config']['postgresql']['user']." password=".$_SESSION['config']['postgresql']['password']) or die("No se ha podido conectar: " . pg_last_error());
 
-	$query = 'SELECT postfix.id_log, "from".desde, postfix.para, postfix."time", postfix.status
+	$query = 'SELECT DISTINCT postfix.id_log, "from".desde, postfix.para, postfix."time", postfix.status
 	FROM fluentd."from", fluentd.postfix 
 	WHERE "from".queue_id = postfix.queue_id';
 
