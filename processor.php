@@ -56,8 +56,8 @@
 	else
 		$hfin = " 23:59'";
 
-	$query .= $hfin;
-	/*$query .= $hfin . " ORDER BY postfix.\"time\" ASC";*/
+	/*$query .= $hfin;*/
+	$query .= $hfin . " ORDER BY postfix.\"time\" ASC";
 
 	$result = pg_exec($query) or die('La consulta original ha fallado: ' . pg_last_error());
 
